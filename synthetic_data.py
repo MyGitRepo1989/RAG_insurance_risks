@@ -5,13 +5,13 @@ import pandas as pd
 import random
 import numpy as np
 import os
-os.environ['GOOGLE_API_KEY'] = 'asdaSsyDxW-Zqxk3sUAesdNW_sRas8a'
+os.environ['GOOGLE_API_KEY'] = 'your key'
 import time
 import google.generativeai as genai
 
 data= pd.read_csv("weather_data_all.csv")
 
-def get_modal():
+def get_model():
     genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
     model_google = genai.GenerativeModel('gemini-1.5-flash')
     return model_google
@@ -57,8 +57,8 @@ def make_data(data, modal_google):
 
 
 
-if __name__== main:
-    model_google = get_modal()
+if __name__ == "__main__":
+    model_google = get_model()
     earthquake_risk_google = make_data(data modal_google)
     data['earthquake_risk_google']=pd.Series(earthquake_risk_google)
     
